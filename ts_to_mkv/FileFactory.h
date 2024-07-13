@@ -1,9 +1,7 @@
 #pragma once
-#include <regex>
 #include <string>
 #include <memory>
 #include <vector>
-#include <array>
 #include <filesystem>
 #include "TsFile.h"
 #include "MkvFile.h"
@@ -14,7 +12,9 @@ public:
 	static std::vector<std::shared_ptr<File>> getFiles(const std::string& path) {
 		std::vector<std::shared_ptr<File>> files;
 		for (const auto& file : std::filesystem::directory_iterator(path)) {
-			auto known_file = initFile(file.path().string());
+			if (!file.is_regular_file())
+				continue;
+			auto known_file = initFile(file.path());
 			if (known_file)
 				files.push_back(known_file);
 		}

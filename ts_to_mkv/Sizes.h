@@ -6,15 +6,14 @@
 #include <iomanip>
 
 namespace Size {
-	class Size_t {
-	public:
+	struct Size_t {
 		Size_t(const uint16_t base, const std::array<std::string, 6>& size_strings, uintmax_t size = 0)
 			: m_base(base), m_size_strings(size_strings), m_size(size) {}
 
 		size_t get_power_of_size() const {
 			if (m_size == 0) return 0;
 			size_t i = 0;
-			for (i = 0; i < m_size_strings.size(); ++i) {
+			for (; i < m_size_strings.size(); ++i) {
 				if (m_size < std::pow(m_base, i + 1))
 					break;
 			}
