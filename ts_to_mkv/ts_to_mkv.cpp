@@ -10,10 +10,11 @@ using namespace std;
 
 int main()
 {
-	vector<shared_ptr<File>> files = FileFactory::getFiles("D:\\Users\\Axelr\\Downloads\\test");
+	vector<shared_ptr<File>> files = FileFactory::getFiles("D:\\Users\\Axelr\\Downloads\\");
 
 	for (const auto& file : files) {
-		cout << *file << endl;
+		if (file->getFileType() == File::FType::TS)
+			wcout << *file << endl;
 	}
 	
 }

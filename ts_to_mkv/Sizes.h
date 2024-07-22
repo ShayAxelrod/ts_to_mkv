@@ -7,7 +7,7 @@
 
 namespace Size {
 	struct Size_t {
-		Size_t(const uint16_t base, const std::array<std::string, 6>& size_strings, uintmax_t size = 0)
+		Size_t(const uint16_t base, const std::array<std::wstring, 6>& size_strings, uintmax_t size = 0)
 			: m_base(base), m_size_strings(size_strings), m_size(size) {}
 
 		size_t get_power_of_size() const {
@@ -21,27 +21,27 @@ namespace Size {
 		}
 
 		const uint16_t m_base;
-		const std::array<std::string, 6>& m_size_strings;
+		const std::array<std::wstring, 6>& m_size_strings;
 		uintmax_t m_size;
 
-		friend std::ostream& operator<<(std::ostream& out, const Size_t& obj);		
+		friend std::wostream& operator<<(std::wostream& out, const Size_t& obj);		
 	};
 
 	struct Bytes : public Size_t {
-		const static inline std::array<std::string, 6> size_strings = {
-			"B","KB","MB","GB","TB","PB"
+		const static inline std::array<std::wstring, 6> size_strings = {
+			L"B",L"KB",L"MB",L"GB",L"TB",L"PB"
 		};
 		Bytes(uintmax_t size = 0) : Size_t(1'000, size_strings, size) {};
 	};
 
 	struct Bits : public Size_t {
-		const static inline std::array<std::string, 6> size_strings = {
-			"b","KiB","MiB","GiB","TiB","PiB"
+		const static inline std::array<std::wstring, 6> size_strings = {
+			L"b",L"KiB",L"MiB",L"GiB",L"TiB",L"PiB"
 		};
 		Bits(uintmax_t size = 0) : Size_t(1'024, size_strings, size) {};
 	};
 
-	std::ostream& operator<<(std::ostream& out, const Size_t& obj) {
+	std::wostream& operator<<(std::wostream& out, const Size_t& obj) {
 		size_t i = obj.get_power_of_size();
 		float size = obj.m_size / std::pow(obj.m_base, i);
 		const auto prev_iosflags = std::cout.flags();

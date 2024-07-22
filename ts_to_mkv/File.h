@@ -14,7 +14,7 @@ public:
 	};
 
 	File(const std::filesystem::path& fs_path, const FType& f_type = FType::NO_INIT)
-		: m_path(fs_path.parent_path().string()), m_name(fs_path.stem().string()),
+		: m_path(fs_path.parent_path().wstring()), m_name(fs_path.stem().wstring()),
 		m_ext(fs_path.extension().string()),
 		m_size(std::filesystem::file_size(fs_path)),
 		m_fs_file_path(fs_path),
@@ -32,12 +32,12 @@ public:
 		return m_fs_file_path == other.m_fs_file_path;
 	}
 
-	friend std::ostream& operator<<(std::ostream& out, const File::FType & type);
-	friend std::ostream& operator<<(std::ostream& out, const File& file);
+	friend std::wostream& operator<<(std::wostream& out, const File::FType & type);
+	friend std::wostream& operator<<(std::wostream& out, const File& file);
 
 protected:
-	std::string m_path = "";
-	std::string m_name = "";
+	std::wstring m_path = L"";
+	std::wstring m_name = L"";
 	std::string m_ext = "";
 	Size::Bits m_size = 0;
 	std::filesystem::path m_fs_file_path = "";
@@ -46,7 +46,7 @@ protected:
 private:
 };
 
-std::ostream& operator<<(std::ostream& out, const File::FType& type) {
+std::wostream& operator<<(std::wostream& out, const File::FType& type) {
 	switch (type) {
 	case File::FType::NO_INIT:
 		out << "NO_INIT";
@@ -61,7 +61,7 @@ std::ostream& operator<<(std::ostream& out, const File::FType& type) {
 	return out;
 }
 
-std::ostream& operator<<(std::ostream& out, const File& file) {
+std::wostream& operator<<(std::wostream& out, const File& file) {
 	out << file.m_file_type << "\t: " << file.m_name << " (" << file.m_size << ")" << "\t[" << file.m_path << "]";
 	return out;
 }
