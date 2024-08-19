@@ -20,22 +20,31 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="File.h">
+    <ClInclude Include="File.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TsFile.h">
+    <ClInclude Include="TsFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MkvFile.h">
+    <ClInclude Include="MkvFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Files.h">
+    <ClInclude Include="Files.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileFactory.h">
+    <ClInclude Include="FileFactory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sizes.h">
+    <ClInclude Include="Sizes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FfmpegManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FfmpegConverter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

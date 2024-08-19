@@ -131,12 +131,15 @@
     <ClCompile Include="ts_to_mkv.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="File.h" />
-    <ClInclude Include="FileFactory.h" />
-    <ClInclude Include="Files.h" />
-    <ClInclude Include="MkvFile.h" />
-    <ClInclude Include="Sizes.h" />
-    <ClInclude Include="TsFile.h" />
+    <ClInclude Include="FfmpegConverter.hpp" />
+    <ClInclude Include="FfmpegManager.hpp" />
+    <ClInclude Include="File.hpp" />
+    <ClInclude Include="FileFactory.hpp" />
+    <ClInclude Include="Files.hpp" />
+    <ClInclude Include="MkvFile.hpp" />
+    <ClInclude Include="Sizes.hpp" />
+    <ClInclude Include="ThreadPool.hpp" />
+    <ClInclude Include="TsFile.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

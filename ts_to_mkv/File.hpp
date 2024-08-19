@@ -2,7 +2,7 @@
 #include <ostream>
 #include <string>
 #include <filesystem>
-#include "Sizes.h"
+#include "Sizes.hpp"
 
 class File {
 public:

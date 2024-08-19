@@ -3,9 +3,9 @@
 #include <memory>
 #include <vector>
 #include <filesystem>
-#include "TsFile.h"
-#include "MkvFile.h"
-#include "File.h"
+#include "TsFile.hpp"
+#include "MkvFile.hpp"
+#include "File.hpp"
 
 class FileFactory {
 public:
