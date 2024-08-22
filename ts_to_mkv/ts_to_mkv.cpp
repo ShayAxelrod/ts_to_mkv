@@ -6,17 +6,17 @@
 #include <memory>
 #include <chrono>
 
-#include "Files.hpp"
+#include "FfmpegManager.hpp"
 
 using namespace std;
+using FFM = FfmpegManager;
 
 int main()
 {
-	vector<shared_ptr<File>> files = FileFactory::getFiles("D:\\Users\\Axelr\\Downloads\\");
+	//Option 1:
+	FFM::convert_path("D:\\Users\\Axelr\\Downloads\\");
 
-	for (const auto& file : files) {
-		if (file->getFileType() == File::FType::TS)
-			wcout << *file << endl;
-	}
-
+	//Option 2:
+	FFM::ConvertableFiles cf = FFM::getFiles("D:\\Users\\Axelr\\Downloads\\");
+	FFM::convert(cf);
 }
