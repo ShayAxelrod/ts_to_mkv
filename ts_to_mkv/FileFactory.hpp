@@ -9,7 +9,9 @@
 
 class FileFactory {
 public:
-	static std::vector<std::shared_ptr<File>> getFiles(const std::string& path) {
+	using fsPath = std::filesystem::path;
+
+	static std::vector<std::shared_ptr<File>> getFiles(const fsPath& path) {
 		std::vector<std::shared_ptr<File>> files;
 		for (const auto& file : std::filesystem::directory_iterator(path)) {
 			if (!file.is_regular_file())
@@ -21,7 +23,7 @@ public:
 		return files;
 	}
 
-	static std::vector<std::shared_ptr<File>> getFiles(const std::vector<std::string>& paths) {
+	static std::vector<std::shared_ptr<File>> getFiles(const std::vector<fsPath>& paths) {
 		std::vector<std::shared_ptr<File>> files;
 		for (const auto& path : paths) {
 			auto files_in_path = getFiles(path);
@@ -30,14 +32,14 @@ public:
 		return files;
 	}
 
-	static std::shared_ptr<File> initFile(const std::filesystem::path& path) {
-		const auto& extension = path.extension().string();
-		if (extension == ".ts") {
+	static std::shared_ptr<File> initFile(const fsPath& path) {
+		const auto& extension = path.extension().wstring();
+		if (extension == L".ts") {
 			return std::make_shared<Ts>(path);
 		}
-		if (extension == ".mkv") {
-			return std::make_shared<Mkv>(path);
-		}
+		//if (extension == L".mkv") {
+		//	return std::make_shared<Mkv>(path);
+		//}
 		else
 			return nullptr;
 	}

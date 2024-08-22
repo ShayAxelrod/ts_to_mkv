@@ -15,7 +15,7 @@ public:
 
 	File(const std::filesystem::path& fs_path, const FType& f_type = FType::NO_INIT)
 		: m_path(fs_path.parent_path().wstring()), m_name(fs_path.stem().wstring()),
-		m_ext(fs_path.extension().string()),
+		m_ext(fs_path.extension().wstring()),
 		m_size(std::filesystem::file_size(fs_path)),
 		m_fs_file_path(fs_path),
 		m_file_type(f_type)
@@ -23,9 +23,22 @@ public:
 
 	void setFileType(const FType& type) {
 		m_file_type = type;
-	}	
+	}
+
 	FType getFileType() const {
 		return m_file_type;
+	}
+
+	std::wstring getPath() const {
+		return m_path;
+	}
+
+	std::wstring getName() const {
+		return m_name;
+	}
+
+	std::wstring getExtention() const {
+		return m_ext;
 	}
 
 	bool operator==(const File& other) const {
@@ -38,7 +51,7 @@ public:
 protected:
 	std::wstring m_path = L"";
 	std::wstring m_name = L"";
-	std::string m_ext = "";
+	std::wstring m_ext = L"";
 	Size::Bits m_size = 0;
 	std::filesystem::path m_fs_file_path = "";
 	FType m_file_type = FType::NO_INIT;
